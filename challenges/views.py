@@ -19,15 +19,12 @@ def index(request):
         response += f'<li> <a href="{day}"> {day.capitalize()} </a></li>'
     response += '</ul>'
 
-    # <ul> <li> monday </li> <li> tuesdaay</li> .... <li> sunday </li>  </ul>
+    # <ul> <li> <a href="monday"> monday </a> </li> <li> tuesdaay</li> .... <li> sunday </li>  </ul>
     return HttpResponse(response)
 
 
 def daily(request, day):
-    try:
-        return HttpResponse(f'<h1>{tasks[day]}</h1>')
-    except:
-        return HttpResponseNotFound(f'<h1>Invalid day!</h1>')
+   return render(request, 'challenges/daily_task.html')
 
 
 def daily_by_number(request, day): # 1 - 7
@@ -35,5 +32,5 @@ def daily_by_number(request, day): # 1 - 7
         return HttpResponseNotFound('Invalid day!')
 
     task_list = list(tasks.values())
-    task = task_list[day-1]
+    task = task_list[day-1] 
     return HttpResponse(task)
