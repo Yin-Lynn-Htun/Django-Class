@@ -12,6 +12,8 @@ def daily(request, day):
         task_name = "Reveiw Python data types."
     elif day == 'tuesday':
         task_name = 'Review condition.'
+    elif day == 'wednesday':
+        task_name = 'Tasks'
     else:
         task_name = 'There is no tasks for this day.'
 
