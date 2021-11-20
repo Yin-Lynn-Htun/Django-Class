@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index ), # challenges/
-    path('<day>/' , views.daily),
+    path('<int:day>/' , views.daily_by_number),
+    path('<str:day>/', views.daily)
 ]

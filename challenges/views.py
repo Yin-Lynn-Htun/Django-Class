@@ -9,8 +9,8 @@ tasks = {
     'wednesday': 'learn django',
     'thursday': "Take a break",
     'friday': "Reveiw Python data types.",
-    'sat': "Review Condition.",
-    'sun': 'learn django',
+    'saturday': "Review Condition.",
+    'sunday': 'learn django',
 }
 
 def index(request):
@@ -22,3 +22,12 @@ def daily(request, day):
         return HttpResponse(tasks[day])
     except:
         return HttpResponseNotFound('Invalid day!')
+
+
+def daily_by_number(request, day): # 1 - 7
+    if day < 1 or day > 7:
+        return HttpResponseNotFound('Invalid day!')
+
+    task_list = list(tasks.values())
+    task = task_list[day-1]
+    return HttpResponse(task)
