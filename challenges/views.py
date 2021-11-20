@@ -14,14 +14,20 @@ tasks = {
 }
 
 def index(request):
-    return HttpResponse("Home page")
+    response = '<ul>'
+    for day in tasks:
+        response += f'<li> <a href="{day}"> {day.capitalize()} </a></li>'
+    response += '</ul>'
+
+    # <ul> <li> monday </li> <li> tuesdaay</li> .... <li> sunday </li>  </ul>
+    return HttpResponse(response)
 
 
 def daily(request, day):
     try:
-        return HttpResponse(tasks[day])
+        return HttpResponse(f'<h1>{tasks[day]}</h1>')
     except:
-        return HttpResponseNotFound('Invalid day!')
+        return HttpResponseNotFound(f'<h1>Invalid day!</h1>')
 
 
 def daily_by_number(request, day): # 1 - 7
