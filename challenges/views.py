@@ -14,17 +14,12 @@ tasks = {
 }
 
 def index(request):
-    response = '<ul>'
-    for day in tasks:
-        response += f'<li> <a href="{day}"> {day.capitalize()} </a></li>'
-    response += '</ul>'
-
-    # <ul> <li> <a href="monday"> monday </a> </li> <li> tuesdaay</li> .... <li> sunday </li>  </ul>
-    return HttpResponse(response)
+    return render(request, 'challenges/index.html')
 
 
-def daily(request, day):
-   return render(request, 'challenges/daily_task.html')
+def daily(request, day): # monday - sunday
+    task = tasks[day]
+    return render(request, 'challenges/daily_task.html', {'task': task})
 
 
 def daily_by_number(request, day): # 1 - 7
