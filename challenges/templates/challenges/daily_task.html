@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenges</title>
-</head>
-<body>
+{% extends 'challenges/base.html' %}
+{% load static %}
 
+{% block title %} Challengs | {{day}} {% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static 'challenges/daily_task.css' %}">
+{% endblock %}
+
+{% block content %}
     <a href="{% url 'index' %}">HomePage</a>
     <h1>{{day|title}}'s tasks</h1>
 
@@ -16,6 +16,4 @@
     {% else %}
         <p>There is no tasks for this day.</p>
     {% endif %}
-
-</body>
-</html>
+{% endblock %}
