@@ -1,6 +1,7 @@
-from django.http.response import HttpResponseNotFound
+from django.http.response import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.urls import reverse
 # Create your views here.
 
 tasks = {
@@ -19,7 +20,10 @@ def index(request):
 
 
 def daily(request, day): # monday - sunday
-    task = tasks[day]
+    try:
+        task = tasks[day]
+    except:
+        return HttpResponseNotFound('Invalid day!')
     return render(request, 'challenges/daily_task.html', {'task': task, 'day': day})
 
 
@@ -27,7 +31,7 @@ def daily_by_number(request, day): # 1 - 7
     if day < 1 or day > 7:
         return HttpResponseNotFound('Invalid day!')
 
-    task_list = list(tasks.values())
-    task = task_list[day-1] 
-    return HttpResponse(task)
+    days_list = list(tasks.keys())
+    day= days_list[day-1]
+    return HttpResponseRedirect(reverse('daily', args=(day,)) )
 
