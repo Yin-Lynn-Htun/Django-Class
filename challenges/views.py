@@ -10,7 +10,7 @@ tasks = {
     'thursday': "Take a break",
     'friday': "Reveiw Python data types.",
     'saturday': "Review Condition.",
-    'sunday': 'learn django',
+    'sunday': '',
 }
 
 def index(request):
@@ -19,7 +19,7 @@ def index(request):
 
 def daily(request, day): # monday - sunday
     task = tasks[day]
-    return render(request, 'challenges/daily_task.html', {'task': task})
+    return render(request, 'challenges/daily_task.html', {'task': task, 'day': day})
 
 
 def daily_by_number(request, day): # 1 - 7
@@ -29,3 +29,4 @@ def daily_by_number(request, day): # 1 - 7
     task_list = list(tasks.values())
     task = task_list[day-1] 
     return HttpResponse(task)
+

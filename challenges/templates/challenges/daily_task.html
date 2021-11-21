@@ -7,7 +7,13 @@
     <title>Challenges</title>
 </head>
 <body>
-    <h1>Monday's tasks</h1>
-    <p>{{task}}</p>
+    <h1>{{day}}'s tasks</h1>
+
+    {% if task %}
+        <p>{{task}}</p>
+    {% else %}
+        <p>There is no tasks for this day.</p>
+    {% endif %}
+
 </body>
 </html>
