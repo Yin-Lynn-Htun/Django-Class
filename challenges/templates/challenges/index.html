@@ -9,7 +9,7 @@
 <body>
     <ul>
         {% for day in days %}
-            <li><a href="{{day}}"> {{day}} </a></li>
+            <li><a href="{% url 'daily' day %}"> {{day}} </a></li>
         {% endfor %}
     </ul>
 </body>
