@@ -14,7 +14,8 @@ tasks = {
 }
 
 def index(request):
-    return render(request, 'challenges/index.html')
+    days = tasks.keys()
+    return render(request, 'challenges/index.html' , {'days': days})
 
 
 def daily(request, day): # monday - sunday
