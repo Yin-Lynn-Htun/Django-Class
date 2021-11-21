@@ -1,0 +1,16 @@
+ul {
+    width: 70vw;
+    display: flex;
+    list-style-type: none;
+}
+
+ul li {
+    background-color: #444444;
+    width: 500px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+ul li a {
+    color: white;
+}
