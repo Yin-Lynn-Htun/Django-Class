@@ -8,8 +8,10 @@
 {% endblock %}
 
 {% block content %}
+    {% include 'challenges/includes/nav.html' %}
+
     <a href="{% url 'index' %}">HomePage</a>
-    <h1>{{day|title}}'s tasks</h1>
+    <h1>{{day|title}}'s tasks</h1>  
 
     {% if task %}
         <p>{{task}}</p>
