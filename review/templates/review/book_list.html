@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+<body>
+    <p>Book List</p>
+    <p>There are {{reviews.count}} books' reviews in the database.</p>
+
+    <a href="{% url 'book_create' %}">Create a review</a>
+
+    {% for review in reviews %}
+        <p>{{review}} - rating: {{review.rating}} 
+            <a href="{% url 'book_update' review.id %}">Update</a> 
+            <a href="{% url 'book_delete' review.id %}">Delete</a>
+        </p> 
+    {% endfor %}
+</body>
+</html>
